@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PowerFlow Energy - Wholesale Energy Solutions</title>
 	<script src="https://assets.adobedtm.com/52e6c31223bb/da58a2b2287a/launch-ENd22f5e82ed1a49339b148bc2959f5ea2-development.js?env=maxis" async></script>
+	<script>
+		// Trigger Reporting Client Navigation Event
+		window.onload = function() {
+			var detail = {
+    			eventType: 'navigation',
+    			type: 'screen',
+    				data: {
+        				appName: "test-page",
+        				currentUri: location.href,
+    				}
+			};
+			document.querySelector('body').dispatchEvent(
+    			new CustomEvent('analyticsEvent', {detail})
+			);
+		};
+	</script>
     <link rel="stylesheet" href="reset.css">
     <style>
         .container {
