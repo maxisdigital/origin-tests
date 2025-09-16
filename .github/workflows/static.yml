@@ -51,19 +51,21 @@ jobs:
       - name: Send success notification
         if: success()
         uses: umahmood/pushover-actions@main
+        env:
+          PUSHOVER_TOKEN: ${{ secrets.PUSHOVER_TOKEN }}
+          PUSHOVER_USER: ${{ secrets.PUSHOVER_USER }}
         with:
           status: success
-          token: ${{ secrets.PUSHOVER_TOKEN }}
-          user: ${{ secrets.PUSHOVER_USER }}
           title: 'GitHub Pages Deployment'
           message: '✅ Origin Tests has been deployed'
   
       - name: Send failure notification
         if: failure()
         uses: umahmood/pushover-actions@main
+        env:
+          PUSHOVER_TOKEN: ${{ secrets.PUSHOVER_TOKEN }}
+          PUSHOVER_USER: ${{ secrets.PUSHOVER_USER }}
         with:
           status: failure
-          token: ${{ secrets.PUSHOVER_TOKEN }}
-          user: ${{ secrets.PUSHOVER_USER }}
           title: 'GitHub Pages Deployment Failed'
           message: '❌ Origin Tests has been deployment failed. Check the logs for details.'
