@@ -41,8 +41,8 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-  pushover-notification:
+        
+  pushover-actions:
     name: Send Pushover Notification
     runs-on: ubuntu-latest
     needs: deploy
@@ -50,6 +50,8 @@ jobs:
     steps:
       - name: Send success notification
         if: success()
+      - uses: actions/checkout@v2 
+      - name: pushover-actions
         uses: umahmood/pushover-actions@main
         env:
           PUSHOVER_TOKEN: ${{ secrets.PUSHOVER_TOKEN }}
@@ -61,6 +63,8 @@ jobs:
   
       - name: Send failure notification
         if: failure()
+      - uses: actions/checkout@v2 
+      - name: pushover-actions
         uses: umahmood/pushover-actions@main
         env:
           PUSHOVER_TOKEN: ${{ secrets.PUSHOVER_TOKEN }}
