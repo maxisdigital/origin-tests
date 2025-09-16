@@ -52,8 +52,8 @@ jobs:
         if: success()
         uses: umahmood/pushover-actions@main
         env:
-          PUSHOVER_TOKEN: ${{ secrets.PUSHOVER_TOKEN }}
-          PUSHOVER_USER: ${{ secrets.PUSHOVER_USER }}
+          PUSHOVER_TOKEN: ${{ secrets.PUSHOVER_API_TOKEN }}
+          PUSHOVER_USER: ${{ secrets.PUSHOVER_USER_KEY }}
         with:
           status: success
           title: 'GitHub Pages Deployment'
@@ -63,8 +63,8 @@ jobs:
         if: failure()
         uses: umahmood/pushover-actions@main
         env:
-          PUSHOVER_TOKEN: ${{ secrets.PUSHOVER_TOKEN }}
-          PUSHOVER_USER: ${{ secrets.PUSHOVER_USER }}
+          PUSHOVER_TOKEN: ${{ secrets.PUSHOVER_API_TOKEN }}
+          PUSHOVER_USER: ${{ secrets.PUSHOVER_USER_KEY }}
         with:
           status: failure
           title: 'GitHub Pages Deployment Failed'
